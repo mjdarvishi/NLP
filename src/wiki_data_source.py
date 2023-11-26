@@ -1,5 +1,6 @@
 import wikipedia
 
+
 def get_medical_title(number):
     # Set the language to English
     wikipedia.set_lang("en")
@@ -33,8 +34,15 @@ def get_wikipedia_text(page_title):
         print(f"An error occurred: {e}")
 
 def get_content(number:10,medical:True):
+    contents=[]
+    titles=None
     if medical:
-        return [get_wikipedia_text(title) for title in get_medical_title(number)]
+        titles=get_medical_title(number)
     else:
-        return [get_wikipedia_text(title) for title in get_non_medical_title(number)]
+        titles=get_non_medical_title(number)
+    for title in titles:
+             content=get_wikipedia_text(title)
+             if content!=None:
+                 contents.append(content)
+    return contents
 
