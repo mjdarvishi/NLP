@@ -15,3 +15,12 @@ this code has 3 part
 * Training part is responsible for training the model and check new titles. In this file there is two method one of them is responsible for creating model and another one is responsible for checking new title.
 
 * Third part of this project is a flask app for making project web base.
+
+# Running Project
+In windows run these commands in rout of project:
+* pip install -r requirements.txt
+* py .\src\app.py
+
+In Linux base systems:
+* pip3 install -r requirements.txt
+* python3  ./src/app.py

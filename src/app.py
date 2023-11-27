@@ -1,15 +1,16 @@
 from flask import Flask, render_template,request
 
 
-from wiki_data_source import get_medical_title,get_non_medical_title,get_wikipedia_text
+from wiki_data_source import get_wikipedia_text
 from bag_of_word_model import check
+from data_repository import prepare_data,get_non_medical_title,get_medical_title
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
-    data=get_medical_title(number=50)
-    data1=get_non_medical_title(number=50)
+    data=get_medical_title()
+    data1=get_non_medical_title()
     return render_template('home.html',data=[data,data1])
 
 @app.route('/', methods=['POST'])
@@ -26,4 +27,5 @@ def detail_page(name):
     return render_template('detail_page.html',data=data,title=name)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    prepare_data()
+    app.run(host='0.0.0.0',debug=True)
