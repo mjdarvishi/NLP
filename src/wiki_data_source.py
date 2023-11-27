@@ -1,11 +1,10 @@
 import wikipedia
 
-
 def get_medical_title(number):
     wikipedia.set_lang("en")
 
     # Get category members for the "Medical" category
-    medical_category = wikipedia.page("Category:Medical")
+    medical_category = wikipedia.page("Category:Health")
     medical_titles = medical_category.links
     return [title for title in medical_titles[:number] if "Category:" not in title]
 

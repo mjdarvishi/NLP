@@ -6,8 +6,10 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.preprocessing import LabelEncoder
-from wiki_data_source import get_wikipedia_text,get_medical_title,get_non_medical_title
-from data_repository import get_medical_content,get_non_medical_content
+from wiki_data_source import get_wikipedia_text
+from data_repository import get_medical_content,get_non_medical_content,prepare_data
+
+prepare_data()
 
 medical_content = get_medical_content()
 
@@ -44,9 +46,6 @@ def create_model():
     accuracy = accuracy_score(y_test, y_pred)
     classification_rep = classification_report(y_test, y_pred, target_names=["Medical", "Non-Medical"],output_dict=True)
 
-    print(f"Accuracy: {accuracy:.2f}")
-    print("\nClassification Report:")
-    print(classification_rep)
     return model,accuracy,classification_rep
 
 main_model,accuracy,classification_rep=create_model()
