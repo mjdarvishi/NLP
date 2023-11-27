@@ -1,2 +1,3 @@
-scikit_learn==1.3.0
-wikipedia==1.4.0
+scikit_learn
+wikipedia
+flask
