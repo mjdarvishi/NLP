@@ -28,4 +28,4 @@ def detail_page(name):
     return render_template('detail_page.html',data=data,title=name)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0')
