@@ -27,11 +27,11 @@ def get_wikipedia_text(page_title):
         text = page.content
         return text
     except wikipedia.exceptions.DisambiguationError as e:
-        print(f"Ambiguous page title")
+        print("Ambiguous page title")
     except wikipedia.exceptions.PageError as e:
-        print(f"Page not found")
+        print("Page not found")
     except Exception as e:
-        print(f"An error occurred")
+        print("An error occurred")
 
 def get_content(number:10,medical:True):
     contents=[]
