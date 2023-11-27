@@ -2,23 +2,18 @@ import wikipedia
 
 
 def get_medical_title(number):
-    # Set the language to English
     wikipedia.set_lang("en")
 
     # Get category members for the "Medical" category
     medical_category = wikipedia.page("Category:Medical")
     medical_titles = medical_category.links
-    # Filter out non-medical titles
     return [title for title in medical_titles[:number] if "Category:" not in title]
 
 def get_non_medical_title(number):
-    # Set the language to English
     wikipedia.set_lang("en")
 
-    # Get category members for the "Medical" category
     medical_category = wikipedia.page("Category:Game")
     medical_titles = medical_category.links
-    # Filter out non-medical titles
     return [title for title in medical_titles[:number] if "Category:" not in title]
 
 def get_wikipedia_text(page_title):

@@ -9,10 +9,8 @@ from sklearn.preprocessing import LabelEncoder
 from wiki_data_source import get_wikipedia_text,get_medical_title,get_non_medical_title
 from data_repository import get_medical_content,get_non_medical_content
 
-      # Fetch Wikipedia content for medical topics
 medical_content = get_medical_content()
 
-    # Fetch Wikipedia content for non-medical topics
 non_medical_content = get_non_medical_content()
 labels = ["Medical"] * len(medical_content) + ["Non-Medical"] * len(non_medical_content)
 
@@ -47,7 +45,6 @@ def create_model():
     accuracy = accuracy_score(y_test, y_pred)
     classification_rep = classification_report(y_test, y_pred, target_names=["Medical", "Non-Medical"])
 
-    # Print results
     print(f"Accuracy: {accuracy:.2f}")
     print("\nClassification Report:")
     print(classification_rep)
@@ -58,7 +55,6 @@ main_model=create_model()
 
 def check(input):
     model=main_model
-      # Fetch Wikipedia content for the new topic
     new_content = get_wikipedia_text(input)
     if new_content ==None:
         return None
@@ -72,6 +68,5 @@ def check(input):
     y = label_encoder.fit_transform(labels)
     predicted_category = label_encoder.inverse_transform([predicted_class])[0]
 
-    # Print the results
     print(f"Predicted Category for '{input}': {predicted_category}")
     return predicted_category

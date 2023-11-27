@@ -1,6 +1,5 @@
 from flask import Flask, render_template,request
 
-# print the updated sys.path
 
 from wiki_data_source import get_medical_title,get_non_medical_title,get_wikipedia_text
 from bag_of_word_model import check
@@ -24,7 +23,6 @@ def index():
 @app.route('/detail/<name>')
 def detail_page(name):
     data=get_wikipedia_text(name)
-    # Render the detail page with the parameters
     return render_template('detail_page.html',data=data,title=name)
 
 if __name__ == '__main__':
