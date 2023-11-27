@@ -16,7 +16,6 @@ labels = ["Medical"] * len(medical_content) + ["Non-Medical"] * len(non_medical_
 
 
 vectorizer = CountVectorizer()
-
 def create_model():
     corpus = medical_content + non_medical_content
 
@@ -43,14 +42,14 @@ def create_model():
 
     # Evaluate the model
     accuracy = accuracy_score(y_test, y_pred)
-    classification_rep = classification_report(y_test, y_pred, target_names=["Medical", "Non-Medical"])
+    classification_rep = classification_report(y_test, y_pred, target_names=["Medical", "Non-Medical"],output_dict=True)
 
     print(f"Accuracy: {accuracy:.2f}")
     print("\nClassification Report:")
     print(classification_rep)
-    return model
+    return model,accuracy,classification_rep
 
-main_model=create_model()
+main_model,accuracy,classification_rep=create_model()
 
 
 def check(input):

@@ -2,7 +2,7 @@ from flask import Flask, render_template,request
 
 
 from wiki_data_source import get_wikipedia_text
-from bag_of_word_model import check
+from bag_of_word_model import check,accuracy,classification_rep
 from data_repository import prepare_data,get_non_medical_title,get_medical_title
 app = Flask(__name__)
 
@@ -25,6 +25,10 @@ def index():
 def detail_page(name):
     data=get_wikipedia_text(name)
     return render_template('detail_page.html',data=data,title=name)
+
+@app.route('/statistics')
+def statistics():
+    return render_template('statistics.html',accur=accuracy,report=classification_rep)
 
 if __name__ == '__main__':
     prepare_data()
