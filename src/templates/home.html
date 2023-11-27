@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP ASSINMENT</title>
+    <style>
+      table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px sotdd #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    </style>
+</head>
+<body>
+    <h1>Input your Title</h1>
+
+    <form method="post" action="{{ url_for('index') }}">
+        <label for="user_input">Enter a title:</label>
+        <input type="text" name="data" id="user_input" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Medical Titles</th>
+                <th>Non Medical Titles</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(45) %}
+            <tr>
+                <td><a href="/detail/{{data[0][i]}}">{{ data[0][i] }}</a></td>
+                <td><a href="/detail/{{data[1][i]}}">{{ data[1][i] }}</a></td>
+            </tr>    
+            {% endfor %}       
+        </tbody>
+    </table>
+</html>
