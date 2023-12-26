@@ -59,7 +59,7 @@ def classification():
     naive_bayes_classifier.fit(X_train, y_train)
 
     # Logistic Regression classifier
-    logistic_regression_classifier = LogisticRegression()
+    logistic_regression_classifier = LogisticRegression(max_iter=1000)
     logistic_regression_classifier.fit(X_train, y_train)
     naive_bayes_accuracy, naive_bayes_report = check_accuracy(naive_bayes_classifier, X_test, y_test)
     logistic_regression_accuracy, logistic_regression_report = check_accuracy(naive_bayes_classifier, X_test, y_test)
