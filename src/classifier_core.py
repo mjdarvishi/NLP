@@ -14,7 +14,7 @@ try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
     nltk.download('punkt')
-    nltk.download("stopwords")
+    # nltk.download("stopwords")
 prepare_data()
 
 # preparing text for the feature extraction part  including :
