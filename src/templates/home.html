@@ -11,6 +11,9 @@
             border-collapse: collapse;
         }
 
+        body {
+            text-align: center;
+        }
         th, td {
             border: 1px sotdd #dddddd;
             text-align: left;
@@ -30,7 +33,7 @@
     }
 
     form {
-        max-width: 400px;
+        width:40%;
         margin: 20px auto;
         background-color: #fff;
         padding: 20px;
@@ -77,25 +80,36 @@
         header a:hover {
             text-decoration: underline;
         }
+        form {
+            display: inline-block;
+            margin-right: 20px; /* Optional: Add some margin between forms */
+        }
 
     </style>
 </head>
 <body>
     <header>
         <h1>Mohammad Javad Darvishi Najafabadi</h1>
+        <h2><a href="/about" target="_blank">Assignment Documentation</a></h2>
         <p>GitHub Project Link: <a href="https://github.com/mjdarvishi/NLP" target="_blank">github.com/mjdarvishi/NLP</a></p>
-                <p><a href="/statistics" target="_blank">Click here to see the statistics about the trained model</a></p>
+                <p><a href="/statistics" target="_blank">Click here to see the statistics about the Nave Base Classification</a></p>
+                <p><a href="/statistics-logestic" target="_blank">Click here to see the statistics about the Logistice Regression Classification</a></p>
 
     </header>
     <h1>Input your Title</h1>
 
     <form method="post" action="{{ url_for('index') }}">
-        <label for="user_input">Enter a title:</label>
+        <label for="user_input"><b>Navie Classification</b></label>
         <input type="text" name="data" id="user_input" required>
         <br>
         <input type="submit" value="Submit">
     </form>
-
+    <form method="post" action="{{ url_for('logistic') }}">
+        <label for="user_input"><b>Logistice Regressio Classification</b></label>
+        <input type="text" name="data" id="user_input" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
     <table>
         <thead>
             <tr>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project Overview</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        h2 {
+            color: #007BFF;
+        }
+
+        ul {
+            padding: 0;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h1>Project Steps</h1>
+        <ul>
+            <li>Accessing Wikipedia API for getting titles and content of titles</li>
+            <ul>
+                <li>The <code>wiki_data_source</code> file is responsible for getting data from Wikipedia API</li>
+            </ul>
+            <li>Download examples and save them in a file or database</li>
+            <ul>
+                <li><code>data_repository_source.py</code> is responsible for this part</li>
+            </ul>
+            <li>Processing and preparing the text with NLTK library</li>
+            <ul>
+                <li>This part, handled by <code>classifier_core.py</code>, involves tokenization, lowercase conversion, stopword removal, and stemming</li>
+            </ul>
+            <li>Feature Extraction from prepared and processed content</li>
+            <ul>
+                <li>Converts a collection of text documents to a matrix of token counts</li>
+            </ul>
+            <li>Machine Learning Model</li>
+            <ul>
+                <li>Uses two approaches: <code>naive_bayes_classifier</code> and <code>logistic_regression_classifier</code></li>
+            </ul>
+            <li>Check the Accuracy and Training Report</li>
+            <li>GitHub Repository and Deployment</li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>Documentation</h1>
+        <ul>
+            <li>Getting data from Wiki and caching them as JSON</li>
+            <ul>
+                <li>This part is responsible for preparing data. Two classes, <code>wiki_data_source.py</code> and <code>data_repository</code>, are involved. <code>wiki_data_source.py</code> has methods for getting the list of medical and non-medical titles and a method for getting the page. <code>data_repository</code> is responsible for saving the content in a JSON file and reading them from the JSON file.</li>
+            </ul>
+            <li>Main part of the assignment - Text Classifier</li>
+            <ul>
+                <li><code>classifier_core.py</code> is responsible for this part. It prepares the content, extracts features from the prepared content, converts the contents into a matrix of token counts, and uses these matrices for classification. Two approaches, <code>naive_bayes_classifier</code> and <code>logistic_regression_classifier</code>, are used for this step. Finally, accuracy is calculated for each approach, and reports are generated.</li>
+            </ul>
+            <li>Third part of the project - Flask App for Web-Based Project</li>
+            <ul>
+                <li>Involves creating a Flask app for a web-based project.</li>
+            </ul>
+        </ul>
+    </section>
+</body>
+
+</html>

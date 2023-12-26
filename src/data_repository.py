@@ -21,6 +21,7 @@ def get_non_medical_title():
 def get_medical_title():
     with open('./src/data/medical_title.json', 'r', encoding='utf-8') as file:
         data = json.load(file)
+    print(len(data))
     return data
 
 def prepare_data():
