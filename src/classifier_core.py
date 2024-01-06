@@ -5,27 +5,42 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
-from nltk.stem import PorterStemmer
+from nltk.stem import PorterStemmer,WordNetLemmatizer
 from data_repository import get_medical_content,get_non_medical_content,prepare_data
 from wiki_data_source import get_wikipedia_text
 from sklearn.preprocessing import LabelEncoder
+import re
+
+algoritms = {0: 'lemmatizer', 1: 'stemmer'}
 try:
     nltk.data.find('tokenizers/punkt')
 except LookupError:
     nltk.download('punkt')
     nltk.download("stopwords")
+    nltk.download('wordnet')
 prepare_data()
 
-# preparing text for the feature extraction part  including :
-# tokenization, lowercase conversion, stopword removal, and stemming
+# preparing the txt
 def text_preparing(text):
+    #remove nomerical 
+    text = re.sub(r'\d+', '', text)
+    # remove special character
+    text= re.sub(r'[^a-zA-Z\s]', '', text)
+    return text
+# tokenizing the text
+def text_tokenizing(text,base_root_algoritm=algoritms[0]):
     tokens = nltk.word_tokenize(text)
     tokens = [word.lower() for word in tokens]
     stop_words = set(stopwords.words("english"))
-    filtered_tokens = [word for word in tokens if word not in stop_words]
-    stemmer = PorterStemmer()
-    stemmed_tokens = [stemmer.stem(word) for word in filtered_tokens]
-    return " ".join(stemmed_tokens)
+    if base_root_algoritm=='limit':    
+        filtered_tokens = [word for word in tokens if word not in stop_words]
+        lemmatizer = WordNetLemmatizer()
+        tokens = [lemmatizer.lemmatize(word) for word in tokens]
+        return ' '.join(tokens)
+    else:
+        stemmer = PorterStemmer()
+        stemmed_tokens = [stemmer.stem(word) for word in filtered_tokens]
+        return " ".join(stemmed_tokens)
 
 
 # medical content
@@ -78,7 +93,7 @@ def check_with_navie(input):
     y = label_encoder.fit_transform(labels)
     X_new = vectorizer.transform([new_content])
     predicted_class = model.predict(X_new)[0]
-    return label_encoder.inverse_transform([predicted_class])[0]
+    return label_encoder.inverse_transform([predicted_class])[1]
 
 # check new document with logistic regression classifier
 def check_with_logistice(input):
