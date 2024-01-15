@@ -4,7 +4,7 @@ def get_geographic_title(number):
     wikipedia.set_lang("en")
 
     # Get category members for the "geographic" category
-    geographic_category = wikipedia.page("Category:geography")
+    geographic_category = wikipedia.page("Category:continent")
     geographic_titles = geographic_category.links
     return [title for title in geographic_titles[:number] if "Category:" not in title]
 

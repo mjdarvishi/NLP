@@ -93,7 +93,7 @@ def check_with_navie(input):
     y = label_encoder.fit_transform(labels)
     X_new = vectorizer.transform([new_content])
     predicted_class = model.predict(X_new)[0]
-    return label_encoder.inverse_transform([predicted_class])[1]
+    return label_encoder.inverse_transform([predicted_class])[0]
 
 # check new document with logistic regression classifier
 def check_with_logistice(input):
