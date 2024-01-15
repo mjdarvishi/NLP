@@ -1,19 +1,19 @@
 import wikipedia
 
-def get_medical_title(number):
+def get_geographic_title(number):
     wikipedia.set_lang("en")
 
-    # Get category members for the "Medical" category
-    medical_category = wikipedia.page("Category:Health")
-    medical_titles = medical_category.links
-    return [title for title in medical_titles[:number] if "Category:" not in title]
+    # Get category members for the "geographic" category
+    geographic_category = wikipedia.page("Category:geography")
+    geographic_titles = geographic_category.links
+    return [title for title in geographic_titles[:number] if "Category:" not in title]
 
-def get_non_medical_title(number):
+def get_non_geographic_title(number):
     wikipedia.set_lang("en")
 
-    medical_category = wikipedia.page("Category:Game")
-    medical_titles = medical_category.links
-    return [title for title in medical_titles[:number] if "Category:" not in title]
+    geographic_category = wikipedia.page("Category:Game")
+    geographic_titles = geographic_category.links
+    return [title for title in geographic_titles[:number] if "Category:" not in title]
 
 def get_wikipedia_text(page_title):
     try:
@@ -27,13 +27,13 @@ def get_wikipedia_text(page_title):
     except Exception as e:
         print("An error occurred")
 
-def get_content(number:10,medical:True):
+def get_content(number:10,geographic:True):
     contents=[]
     titles=None
-    if medical:
-        titles=get_medical_title(number)
+    if geographic:
+        titles=get_geographic_title(number)
     else:
-        titles=get_non_medical_title(number)
+        titles=get_non_geographic_title(number)
     for title in titles:
              content=get_wikipedia_text(title)
              if content!=None:

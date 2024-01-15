@@ -2,14 +2,14 @@ from flask import Flask, render_template,request
 
 from wiki_data_source import get_wikipedia_text
 from classifier_core import check_with_navie,check_with_logistice,naive_bayes_accuracy,logistic_regression_accuracy,logistic_regression_report,naive_bayes_report
-from data_repository import get_non_medical_title,get_medical_title
+from data_repository import get_non_geographic_title,get_geographic_title
 app = Flask(__name__)
 
 
 @app.route('/')
 def home():
-    data=get_medical_title()
-    data1=get_non_medical_title()
+    data=get_geographic_title()
+    data1=get_non_geographic_title()
     return render_template('home.html',data=[data,data1])
 
 @app.route('/', methods=['POST'])

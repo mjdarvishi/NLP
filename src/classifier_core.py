@@ -6,7 +6,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 from nltk.stem import PorterStemmer,WordNetLemmatizer
-from data_repository import get_medical_content,get_non_medical_content,prepare_data
+from data_repository import get_geographic_content,get_non_geographic_content,prepare_data
 from wiki_data_source import get_wikipedia_text
 from sklearn.preprocessing import LabelEncoder
 import re
@@ -43,11 +43,11 @@ def text_tokenizing(text,base_root_algoritm=algoritms[0]):
         return " ".join(stemmed_tokens)
 
 
-# medical content
-medical_content = [text_preparing(item) for item in  get_medical_content()]
-# non medical content
-non_medical_content = [text_preparing(item) for item in get_non_medical_content()]
-labels = ["Medical"] * len(medical_content) + ["Non-Medical"] * len(non_medical_content)
+# geographic content
+geographic_content = [text_preparing(item) for item in  get_geographic_content()]
+# non geographic content
+non_geographic_content = [text_preparing(item) for item in get_non_geographic_content()]
+labels = ["geographic"] * len(geographic_content) + ["Non-geographic"] * len(non_geographic_content)
 vectorizer = CountVectorizer()
 
 
@@ -55,7 +55,7 @@ vectorizer = CountVectorizer()
 
 # feature extraction 
 def feature_extraction():
-    x = vectorizer.fit_transform(medical_content + non_medical_content)
+    x = vectorizer.fit_transform(geographic_content + non_geographic_content)
     label_encoder = LabelEncoder()
     y = label_encoder.fit_transform(labels)
     return x,y
@@ -63,7 +63,7 @@ def feature_extraction():
 # check the accuracy
 def check_accuracy(classifier, X_test, y_test):
     y_pred = classifier.predict(X_test)
-    return accuracy_score(y_test, y_pred),  classification_report(y_test, y_pred,target_names=["Medical", "Non-Medical"],output_dict=True)
+    return accuracy_score(y_test, y_pred),  classification_report(y_test, y_pred,target_names=["geographic", "Non-geographic"],output_dict=True)
 
 # classification with two approach naive_bayes_classifier and logistic_regression_classifier
 def classification():

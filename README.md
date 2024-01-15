@@ -15,7 +15,7 @@
 # Documentation
 this code has 3 part 
 
-* Getting data from wiki and caching them as json. This part is responsible for preparing data, for this part i have two class wiki_data_source.py that has some method for getting the list of medical and non medical titles and there is method for getting the page. also data_repository is responsible for saving the content in json file and read them from the json file.
+* Getting data from wiki and caching them as json. This part is responsible for preparing data, for this part i have two class wiki_data_source.py that has some method for getting the list of geographic and non geographic titles and there is method for getting the page. also data_repository is responsible for saving the content in json file and read them from the json file.
 
 * The main part of this assignment is text classifier. classifier_core.py is responsible for this part. In this file i prepare the content. And next from the prepared content feature will be extracted and convert the contents a matrix of token counts. Then use these matrix for classification, two aproach are used for this step  naive_bayes_classifier and logistic_regression_classifier. And finally calculate the accuracy for each aproach and also get the report from them.
 
